@@ -89,7 +89,9 @@ if page == "✈️ Plan My Trip":
         sel_city = st.selectbox("City", sorted(cities_avail["CityName"].unique()) if len(cities_avail) else ["Unspecified"])
  
         sel_type = st.selectbox("Attraction Type", sorted(type_df["AttractionType"].unique()))
-        sel_year = st.slider("Visit Year", 2013, 2026, 2024)
+        from datetime import datetime
+        current_year = datetime.now().year
+        sel_year = st.slider("Visit Year", 2013, current_year + 5, current_year)
         sel_month = st.selectbox("Visit Month", list(range(1, 13)), format_func=lambda m: pd.Timestamp(2024, m, 1).strftime("%B"))
  
     st.markdown("---")

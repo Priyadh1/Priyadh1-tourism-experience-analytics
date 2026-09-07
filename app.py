@@ -94,7 +94,7 @@ if page == "✈️ Plan My Trip":
 
     st.markdown("---")
 
-    if st.button("🔮 Predict My Trip", type="primary", use_container_width=True):
+    if st.button("🔮 Predict My Trip", type="primary", width='stretch'):
         def safe_encode(col, value):
             le = encoders[col]
             if value in le.classes_:
@@ -149,7 +149,7 @@ if page == "✈️ Plan My Trip":
             fig = px.bar(prob_df, x="Probability", y="VisitMode", orientation="h",
                          color="Probability", color_continuous_scale="YlGn", title="Visit Mode Likelihood")
             fig.update_layout(showlegend=False, xaxis_tickformat=".0%")
-            st.plotly_chart(fig, use_container_width=True)
+            st.plotly_chart(fig, width='stretch')
 
         st.markdown("### 🏝️ Recommended attractions for you")
         top_attractions = type_attractions.sort_values("AttractionAvgRating", ascending=False).head(4)
@@ -183,18 +183,18 @@ elif page == "📊 Explore Insights":
                       x="AttractionPopularity", y="Attraction", orientation="h",
                       color="AttractionPopularity", color_continuous_scale="YlGn",
                       title="Top 10 Most Visited Attractions")
-        st.plotly_chart(fig1, use_container_width=True)
+        st.plotly_chart(fig1, width='stretch')
     with c2:
         fig2 = px.bar(plot_df.groupby("AttractionType")["AttractionAvgRating"].mean().sort_values().reset_index(),
                       x="AttractionAvgRating", y="AttractionType", orientation="h",
                       color="AttractionAvgRating", color_continuous_scale="YlGn",
                       title="Average Rating by Attraction Type")
-        st.plotly_chart(fig2, use_container_width=True)
+        st.plotly_chart(fig2, width='stretch')
 
     st.markdown("### Visit Mode Breakdown")
     mode_counts = mode[mode["VisitMode"] != "Unspecified"]
     fig3 = px.pie(mode_counts, names="VisitMode", title="Visit Mode Categories", hole=0.4)
-    st.plotly_chart(fig3, use_container_width=True)
+    st.plotly_chart(fig3, width='stretch')
 
 # ============================================================
 # PAGE 3 — DISCOVER ATTRACTIONS (Recommender)
@@ -240,7 +240,7 @@ elif page == "🤖 Model Performance":
     fig4 = px.bar(clf_hist, x="Model", y="Test Accuracy", color="Test Accuracy",
                   color_continuous_scale="YlGn", title="Classification Accuracy Across Models")
     fig4.update_yaxes(tickformat=".0%")
-    st.plotly_chart(fig4, use_container_width=True)
+    st.plotly_chart(fig4, width='stretch')
     st.caption("Final model: XGBoost (Tuned) — 42.6% test accuracy, more than 2x random-guessing baseline (20% for 5 classes).")
 
     st.markdown("### Regression — Predicting Rating")
@@ -251,7 +251,7 @@ elif page == "🤖 Model Performance":
     fig5 = px.bar(reg_hist, x="Model", y="Test R2", color="Test R2",
                   color_continuous_scale="YlGn", title="Regression R² Across Models")
     fig5.update_yaxes(tickformat=".0%")
-    st.plotly_chart(fig5, use_container_width=True)
+    st.plotly_chart(fig5, width='stretch')
     st.caption("Final model: Random Forest (Tuned) — R² 12.8%, RMSE 0.91.")
 
     st.markdown("### Honest Note")

@@ -6,7 +6,7 @@
 A machine learning platform that analyzes tourist behavior to predict trip ratings, classify visit modes, and recommend attractions — built on 52,930 real tourism transactions across 9 relational tables.
 
 ## 🔗 Live App
-**[Launch the App →](https://priyadh1-tourism-experience-analytics.streamlit.app)**
+**https://priyadharshini-tourism-app-f9esj2aqycqybdlvefxx5v.streamlit.app/**
 
 ## 📌 Project Overview
 This project helps a tourism platform understand and personalize the traveler experience through three integrated ML components:
